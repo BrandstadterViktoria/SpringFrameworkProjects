@@ -23,6 +23,20 @@ public class BankAccountController {
         return "Submit";
     }
 
+    @RequestMapping("/Bankaccounts")
+    public String showMArrayList(Model model) {
+        List<BankAccount> myArrayList = new ArrayList<>();
+        myArrayList.add(new BankAccount("Sarabi", 4000, "lion", true, false));
+        myArrayList.add(new BankAccount("Nala", 2300, "lion", true, false));
+        myArrayList.add(new BankAccount("Pumbaa", 300, "pig", false, true));
+        myArrayList.add(new BankAccount("Timon", 400, "surikata", false, true));
+        model.addAttribute("MyArrayList", myArrayList);
+        model.addAttribute("goodguy","goodguy");
+        model.addAttribute("badguy","badguy");
+        return "array";
+    }
+
+
 
 
 
