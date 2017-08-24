@@ -17,6 +17,13 @@ public class BankAccountController {
         return "ExerciseHTML";
     }
 
+    @RequestMapping("/Exercise1Endpoint2")
+    public String returnSubmitHtml(Model model) {
+        model.addAttribute("text", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+        return "Submit";
+    }
+
+
 
 
 
