@@ -1,8 +1,10 @@
 package com.ppChat.demo.controller;
 
+import com.ppChat.demo.model.User;
 import com.ppChat.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +22,10 @@ public class PPChatController {
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("error",pPChatErrorMessage);
         if (userRepository.count() == 0) {
-            return "redirect:/register";
+            return "redirect:/registration";
         } else {
             return "index";
         }
@@ -37,12 +40,15 @@ public class PPChatController {
     }
 
     @RequestMapping("/registration/enter")
-    public String doRegistration (@RequestParam ("name"), String name) {
+    public String doRegistration (@RequestParam ("name") String name) {
         if (name.isEmpty()) {
             pPChatErrorMessage = "The username field is empty.";
+            return "redirect:/";
         }else{
-            
-        }
-    return "redirect:/";
+            User user = new User();
+            user.setName(name);
+            userRepository.save(user);
+        } return "redirect:/";
+
     }
     }
