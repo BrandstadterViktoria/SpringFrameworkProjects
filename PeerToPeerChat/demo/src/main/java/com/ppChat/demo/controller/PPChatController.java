@@ -19,4 +19,9 @@ public class PPChatController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/registration")
+    public String showRegistration (){
+
+    }
 }
