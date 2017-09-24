@@ -1,5 +1,6 @@
 package com.ppChat.demo.controller;
 
+import com.ppChat.demo.model.PPChatErrorMessage;
 import com.ppChat.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PPChatController {
 
     private UserRepository userRepository;
+    private PPChatErrorMessage ppChatErrorMessage;
 
     @Autowired
     public PPChatController(UserRepository userRepository) {
