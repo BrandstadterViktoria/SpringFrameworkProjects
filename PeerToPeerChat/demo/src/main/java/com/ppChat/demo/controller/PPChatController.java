@@ -22,6 +22,6 @@ public class PPChatController {
 
     @GetMapping("/registration")
     public String showRegistration (){
-
+        return "registration";
     }
 }
