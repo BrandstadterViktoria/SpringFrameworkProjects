@@ -1,5 +1,4 @@
 package com.ppChat.demo.model;
-
 import javax.persistence.*;
 
 @Entity
@@ -26,4 +25,4 @@ public class User {
         this.name = name;
     }
 }
-}
+
