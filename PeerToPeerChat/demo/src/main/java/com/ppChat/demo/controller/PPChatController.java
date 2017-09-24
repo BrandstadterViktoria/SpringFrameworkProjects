@@ -1,21 +1,22 @@
 package com.ppChat.demo.controller;
 
-import com.ppChat.demo.model.PPChatErrorMessage;
 import com.ppChat.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PPChatController {
 
     private UserRepository userRepository;
-    private PPChatErrorMessage ppChatErrorMessage;
+    private String pPChatErrorMessage;
 
     @Autowired
     public PPChatController(UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.pPChatErrorMessage = "";
     }
 
     @GetMapping("/")
@@ -36,9 +37,12 @@ public class PPChatController {
     }
 
     @RequestMapping("/registration/enter")
-    public String doRegistration () {
+    public String doRegistration (@RequestParam ("name"), String name) {
+        if (name.isEmpty()) {
+            pPChatErrorMessage = "The username field is empty.";
+        }else{
+            
+        }
     return "redirect:/";
     }
-
-
     }
