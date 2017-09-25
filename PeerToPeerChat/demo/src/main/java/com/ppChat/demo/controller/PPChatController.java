@@ -23,7 +23,7 @@ public class PPChatController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("error",pPChatErrorMessage);
+        model.addAttribute("error", pPChatErrorMessage);
         if (userRepository.count() == 0) {
             return "redirect:/registration";
         } else {
@@ -32,11 +32,26 @@ public class PPChatController {
     }
 
     @GetMapping("/registration")
-    public String showRegistration () {
+    public String showRegistration (Model model) {
+        model.addAttribute("error",pPChatErrorMessage);
         if(userRepository.count() < 0){
             return "redirect:/";
         }
         return "registration";
+    }
+
+    @RequestMapping("/update")
+    public String doUpdate(@RequestParam("name") String userName) {
+        if (userName.isEmpty()) {
+            pPChatErrorMessage = "The username field is empty.";
+            return "redirect:/";
+        } else {
+            pPChatErrorMessage = "";
+            User user = userRepository.findOne(1L);
+            user.setName(userName);
+            userRepository.save(user);
+            return "redirect:/";
+        }
     }
 
     @RequestMapping("/registration/enter")
@@ -45,8 +60,7 @@ public class PPChatController {
             pPChatErrorMessage = "The username field is empty.";
             return "redirect:/";
         }else{
-            User user = new User();
-            user.setName(name);
+            User user = new User(name);
             userRepository.save(user);
         } return "redirect:/";
 
