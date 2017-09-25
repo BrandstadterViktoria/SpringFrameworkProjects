@@ -1,5 +1,6 @@
 package com.ppChat.demo.controller;
 
+import com.ppChat.demo.model.Message;
 import com.ppChat.demo.model.User;
 import com.ppChat.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class PPChatController {
 
     private UserRepository userRepository;
     private String pPChatErrorMessage;
+    private List<Message> messageList;
 
     @Autowired
     public PPChatController(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.pPChatErrorMessage = "";
-    }
+        this.messageList = new ArrayList<>();
+        }
 
     @GetMapping("/")
     public String index(Model model) {

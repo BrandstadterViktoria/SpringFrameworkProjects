@@ -11,5 +11,9 @@
     <input type="text" name="name" th:value="${user.getName()}"/>
     <button type="submit">update</button>
 </form>
+<ul th:each=" message : ${messageList}">
+    <li th:utext="${message.getUsername()} + '&lt;br/&gt;' + ${message.getTextField()}">
+    </li>
+</ul>
 </body>
 </html>
