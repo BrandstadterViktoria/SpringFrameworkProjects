@@ -1,5 +1,6 @@
 package com.ppChat.demo;
 
+import com.ppChat.demo.repository.MessageRepository;
 import com.ppChat.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,10 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication implements CommandLineRunner {
 
 	private UserRepository userRepository;
+	private MessageRepository messageRepository;
 
 	@Autowired
-	public DemoApplication(UserRepository userRepository) {
+	public DemoApplication(UserRepository userRepository, MessageRepository messageRepository) {
 		this.userRepository = userRepository;
+		this.messageRepository = messageRepository;
 	}
 
 	public static void main(String[] args) {

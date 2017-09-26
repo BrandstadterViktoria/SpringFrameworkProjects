@@ -6,5 +6,20 @@
 </head>
 <body>
 <h1>Peer to peer chat program </h1>
+<form th:action="@{/update}" method="post">
+    <p>Your username: </p>
+    <input type="text" name="name" th:value="${user.getName()}"/>
+    <button type="submit">update</button>
+</form>
+<ul>
+    <li>Username: App</li>
+    <li>Text: Hi there! Submit your message using the send button!</li>
+</ul>
+<ul th:each=" message : ${messageList}">
+    <li th:utext="${message.getUsername()} + '&lt;br/&gt;' + ${message.getText()}">
+    </li>
+</ul>
+<input type="text" name="text"/>
+<button type="submit">send</button>
 </body>
 </html>

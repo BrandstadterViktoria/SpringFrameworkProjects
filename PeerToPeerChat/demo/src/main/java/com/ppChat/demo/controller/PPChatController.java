@@ -19,17 +19,23 @@ public class PPChatController {
     private UserRepository userRepository;
     private String pPChatErrorMessage;
     private List<Message> messageList;
+    private User user;
+    private Message message;
 
     @Autowired
     public PPChatController(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.pPChatErrorMessage = "";
         this.messageList = new ArrayList<>();
-        }
+        this.user = new User();
+    }
 
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("error", pPChatErrorMessage);
+        model.addAttribute("messageList", messageList);
+        model.addAttribute("user", user);
+        model.addAttribute("message",message);
         if (userRepository.count() == 0) {
             return "redirect:/registration";
         } else {
@@ -38,9 +44,9 @@ public class PPChatController {
     }
 
     @GetMapping("/registration")
-    public String showRegistration (Model model) {
-        model.addAttribute("error",pPChatErrorMessage);
-        if(userRepository.count() < 0){
+    public String showRegistration(Model model) {
+        model.addAttribute("error", pPChatErrorMessage);
+        if (userRepository.count() < 0) {
             return "redirect:/";
         }
         return "registration";
@@ -61,14 +67,15 @@ public class PPChatController {
     }
 
     @RequestMapping("/registration/enter")
-    public String doRegistration (@RequestParam ("name") String name) {
+    public String doRegistration(@RequestParam("name") String name) {
         if (name.isEmpty()) {
             pPChatErrorMessage = "The username field is empty.";
             return "redirect:/";
-        }else{
+        } else {
             User user = new User(name);
             userRepository.save(user);
-        } return "redirect:/";
+        }
+        return "redirect:/";
 
     }
-    }
+}

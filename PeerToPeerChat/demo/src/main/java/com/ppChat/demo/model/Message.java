@@ -59,6 +59,7 @@ public class Message {
     public void setText(String text) {
         this.text = text;
     }
+
     public Long generateIDNumber() {
         Random rnd = new Random();
         long n = 100000 + rnd.nextInt(900000);
