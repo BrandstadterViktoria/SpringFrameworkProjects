@@ -19,7 +19,9 @@
     <li th:utext="${message.getUsername()} + '&lt;br/&gt;' + ${message.getText()}">
     </li>
 </ul>
+<form th:action="@{/send}" method="post">
 <input type="text" name="text"/>
 <button type="submit">send</button>
+</form>
 </body>
 </html>
