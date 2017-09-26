@@ -1,5 +1,6 @@
 package com.ppChat.demo.controller;
 
+import com.ppChat.demo.model.Input;
 import com.ppChat.demo.model.Message;
 import com.ppChat.demo.model.User;
 import com.ppChat.demo.repository.MessageRepository;
@@ -90,4 +91,6 @@ public class PPChatController {
         messageList.add(message);
         return "redirect:/";
     }
+
+   }
 }
