@@ -1,14 +1,14 @@
 package com.ppChat.demo.model;
 
-public class ErrorMsgForPPChat {
+public class ResponseMessagePPChat {
     private String status;
     private String message;
 
-    public ErrorMsgForPPChat(String status) {
+    public ResponseMessagePPChat(String status) {
         this.status = status;
     }
 
-    public ErrorMsgForPPChat(String status, String message) {
+    public ResponseMessagePPChat(String status, String message) {
         this.status = status;
         this.message = message;
     }
