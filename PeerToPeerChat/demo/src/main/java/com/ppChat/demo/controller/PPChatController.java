@@ -4,6 +4,8 @@ import com.ppChat.demo.model.Message;
 import com.ppChat.demo.model.User;
 import com.ppChat.demo.repository.MessageRepository;
 import com.ppChat.demo.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,7 @@ public class PPChatController {
     private List<Message> messageList;
     private User user;
     private Message message;
+    private Logger logger = LoggerFactory.getLogger(PPChatController.class);
 
     @Autowired
     public PPChatController(UserRepository userRepository, MessageRepository messageRepository) {
