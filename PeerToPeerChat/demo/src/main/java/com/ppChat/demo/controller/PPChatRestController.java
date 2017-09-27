@@ -24,6 +24,6 @@ public class PPChatRestController {
     public Object receiveMessage(@RequestBody Input input) {
         Message message = input.getMessage();
         messageRepository.save(message);
-        return new ResponseMessagePPChatOK("ok");
+        return new ResponseMessagePPChatOK();
     }
 }

@@ -1,8 +1,8 @@
 package com.ppChat.demo.model;
 
 public class ResponseMessagePPChat401 {
-    private String status;
-    private String message;
+    private String status = " error";
+    private String message = "Missing field(s) : ";
 
     public ResponseMessagePPChat401(String status, String message) {
         this.status = status;
