@@ -6,10 +6,6 @@ public class ResponseMessagePPChatOK {
     public ResponseMessagePPChatOK() {
     }
 
-    public ResponseMessagePPChatOK(String status, String message) {
-        this.status = status;
-    }
-
     public String getStatus() {
         return status;
     }

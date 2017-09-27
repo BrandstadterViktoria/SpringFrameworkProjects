@@ -4,9 +4,8 @@ public class ResponseMessagePPChat401 {
     private String status = " error";
     private String message = "Missing field(s) : ";
 
-    public ResponseMessagePPChat401(String status, String message) {
-        this.status = status;
-        this.message = message;
+    public ResponseMessagePPChat401() {
+
     }
 
     public String getStatus() {
@@ -24,4 +23,9 @@ public class ResponseMessagePPChat401 {
     public void setMessage(String message) {
         this.message = message;
     }
-}
+
+
+   }
+
+
+

@@ -40,6 +40,14 @@ public class Message {
 
     }
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
