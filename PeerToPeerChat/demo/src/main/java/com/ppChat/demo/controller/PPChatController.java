@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class PPChatController {
     private List<Message> messageList;
     private User user;
     private Message message;
-    private Logger logger = LoggerFactory.getLogger(PPChatController.class);
+    static private Logger logger = LoggerFactory.getLogger(PPChatController.class);
 
     @Autowired
     public PPChatController(UserRepository userRepository, MessageRepository messageRepository) {
@@ -38,7 +39,8 @@ public class PPChatController {
     }
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpServletRequest request) {
+        logger.info("Endpoint: " + request.getServletPath() + "------" + request.getRequestURI());
         model.addAttribute("error", pPChatErrorMessage);
         model.addAttribute("messageList", messageList);
         model.addAttribute("user", user);
@@ -51,7 +53,9 @@ public class PPChatController {
     }
 
     @GetMapping("/registration")
-    public String showRegistration(Model model) {
+    public String showRegistration(Model model, HttpServletRequest request) {
+        logger.info("Endpoint: " + request.getServletPath() + "------" + request.getRequestURI());
+
         model.addAttribute("error", pPChatErrorMessage);
         if (userRepository.count() < 0) {
             return "redirect:/";
