@@ -24,7 +24,18 @@ public class PPChatRestController {
 
     @PostMapping("/api/message/receive")
     public Object receiveMessage(@RequestBody MessageForUse messageForUse) {
-
+        if (messageValidator.getMissingProperties().isEmpty() && (messageForUse.getUser().getName() != CLIENT_ID)) {
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.postForObject(ADDRESS + "/api/message/receive", messageForUse, ResponseMessagePPChatOK.class);
+            Message message = messageForUse.getMessage();
+            messageRepository.save(message);
+            return new ResponseMessagePPChatOK();
+        } else if (messageValidator.getMissingProperties().isEmpty()) {
+            Message message = messageForUse.getMessage();
+            messageRepository.save(message);
+            return new ResponseMessagePPChatOK();
+        } else {
+            return new ResponseMessagePPChat401(messageValidator.getMissingProperties());
         }
     }
 }
