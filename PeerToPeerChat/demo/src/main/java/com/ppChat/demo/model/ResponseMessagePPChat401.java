@@ -1,10 +1,13 @@
 package com.ppChat.demo.model;
 
+import java.util.List;
+
 public class ResponseMessagePPChat401 {
     private String status = " error";
-    private String message = "Missing field(s) : ";
+    private List<String> missingProperties;
 
-    public ResponseMessagePPChat401() {
+    public ResponseMessagePPChat401(List<String> missingProperties) {
+        this.missingProperties = missingProperties;
 
     }
 
@@ -16,16 +19,14 @@ public class ResponseMessagePPChat401 {
         this.status = status;
     }
 
-    public String getMessage() {
-        return message;
+    public List<String> getMissingProperties() {
+        return missingProperties;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMissingProperties(List<String> missingProperties) {
+        this.missingProperties = missingProperties;
     }
-
-
-   }
+}
 
 
 
