@@ -28,6 +28,8 @@ public class PPChatController {
     private User user;
     private Message message;
     static private Logger logger = LoggerFactory.getLogger(PPChatController.class);
+    private static final String CLIENT_ID = System.getenv("CHAT_APP_UNIQUE_ID");
+    private static final String ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESSS");
 
     @Autowired
     public PPChatController(UserRepository userRepository, MessageRepository messageRepository) {
@@ -44,7 +46,7 @@ public class PPChatController {
         model.addAttribute("error", pPChatErrorMessage);
         model.addAttribute("messageList", messageList);
         model.addAttribute("user", user);
-        model.addAttribute("message",message);
+        model.addAttribute("message", message);
         if (userRepository.count() == 0) {
             return "redirect:/registration";
         } else {
@@ -89,14 +91,14 @@ public class PPChatController {
         return "redirect:/";
 
     }
+
     @PostMapping("/send")
-    public String doSend (@RequestParam ("text") String text){
+    public String doSend(@RequestParam("text") String text) {
         Message message = new Message(text);
         message.setUsername(userRepository.findOne(1L).getName());
         messageRepository.save(message);
         messageList.add(message);
         return "redirect:/";
     }
-
-   }
+}
 
