@@ -8,7 +8,7 @@
 <h1>Peer to peer chat program </h1>
 <form th:action="@{/update}" method="post">
     <p>Your username: </p>
-    <input type="text" name="name" th:value="${user.getName()}"/>
+    <messageForUse type="text" name="name" th:value="${user.getName()}"/>
     <button type="submit">update</button>
 </form>
 <ul>
@@ -20,7 +20,7 @@
     </li>
 </ul>
 <form th:action="@{/send}" method="post">
-<input type="text" name="text"/>
+<messageForUse type="text" name="text"/>
 <button type="submit">send</button>
 </form>
 <ul>

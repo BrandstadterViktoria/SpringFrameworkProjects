@@ -1,6 +1,8 @@
 package com.ppChat.demo.controller;
 
 import com.ppChat.demo.model.Message;
+import com.ppChat.demo.model.MessageForUse;
+import com.ppChat.demo.model.ResponseMessagePPChatOK;
 import com.ppChat.demo.model.User;
 import com.ppChat.demo.repository.MessageRepository;
 import com.ppChat.demo.repository.UserRepository;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -29,7 +32,7 @@ public class PPChatController {
     private Message message;
     static private Logger logger = LoggerFactory.getLogger(PPChatController.class);
     private static final String CLIENT_ID = System.getenv("CHAT_APP_UNIQUE_ID");
-    private static final String ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESSS");
+    private static final String ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESS");
 
     @Autowired
     public PPChatController(UserRepository userRepository, MessageRepository messageRepository) {
@@ -83,7 +86,7 @@ public class PPChatController {
     public String doRegistration(@RequestParam("name") String name) {
         if (name.isEmpty()) {
             pPChatErrorMessage = "The username field is empty.";
-            return "redirect:/";
+            return "redirect:/";  private String messageOK;
         } else {
             User user = new User(name);
             userRepository.save(user);
@@ -98,6 +101,9 @@ public class PPChatController {
         message.setUsername(userRepository.findOne(1L).getName());
         messageRepository.save(message);
         messageList.add(message);
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForObject(ADDRESS + "/api/message/receive", new MessageForUse(message,new User(CLIENT_ID)),
+                ResponseMessagePPChatOK.class);
         return "redirect:/";
     }
 }
