@@ -1,32 +1,31 @@
 package com.ppChat.demo.model;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
 public class User {
 
     @Id
-    private String name;
+    private String id;
 
     public User() {
     }
 
-    public User(Long id) {
-
-    }
 
     public void setName(String name) {
-        this.name = name;
+        this.id = name;
     }
 
 
 
     public User(String name) {
-        this.name = name;
+        this.id = name;
     }
 
     public String getName() {
-        return name;
+        return id;
     }
 }
 

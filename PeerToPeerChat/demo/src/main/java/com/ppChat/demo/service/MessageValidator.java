@@ -8,17 +8,18 @@ import java.util.List;
 
 @Service
 public class MessageValidator {
-   
-    List<String> missingProperties;
+
+    private List<String> missingProperties;
 
     public MessageValidator() {
+        this.missingProperties = new ArrayList<>();
 
     }
 
     public MessageValidator(List<String> missingProperties) {
         this.missingProperties = new ArrayList<>();
         this.missingProperties = missingProperties;
-        missingProperties.add("Missing field(s): , ");
+        missingProperties.add("Missing field(s): , " + missingProperties);
     }
 
     public List<String> getMissingProperties() {

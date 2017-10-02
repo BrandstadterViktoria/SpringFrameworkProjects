@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MessageForUse {
     private Message message;
+
     @JsonProperty ("client")
     private User user;
 
