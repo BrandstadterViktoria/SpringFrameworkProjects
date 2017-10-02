@@ -86,7 +86,7 @@ public class PPChatController {
     public String doRegistration(@RequestParam("name") String name) {
         if (name.isEmpty()) {
             pPChatErrorMessage = "The username field is empty.";
-            return "redirect:/";  private String messageOK;
+            return "redirect:/";
         } else {
             User user = new User(name);
             userRepository.save(user);

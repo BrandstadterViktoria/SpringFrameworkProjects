@@ -9,6 +9,10 @@ public class MessageForUse {
     public MessageForUse(Message message, String name) {
     }
 
+    public MessageForUse(){
+
+    }
+
     public MessageForUse(Message message, User user) {
         this.message = message;
         this.user = user;

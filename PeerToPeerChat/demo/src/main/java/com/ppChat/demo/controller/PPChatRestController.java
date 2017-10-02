@@ -17,14 +17,15 @@ public class PPChatRestController {
     private MessageValidator messageValidator;
 
     @Autowired
-    public PPChatRestController(MessageRepository messageRepository) {
+    public PPChatRestController(MessageRepository messageRepository, MessageValidator messageValidator) {
         this.messageRepository = messageRepository;
+        this.messageValidator = messageValidator;
 
     }
 
     @PostMapping("/api/message/receive")
     public Object receiveMessage(@RequestBody MessageForUse messageForUse) {
-        if (messageValidator.getMissingProperties().isEmpty() && (messageForUse.getUser().getName() != CLIENT_ID)) {
+        if (messageValidator.validate(messageForUse() && (messageForUse.getUser().getName() != CLIENT_ID)) {
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.postForObject(ADDRESS + "/api/message/receive", messageForUse, ResponseMessagePPChatOK.class);
             Message message = messageForUse.getMessage();

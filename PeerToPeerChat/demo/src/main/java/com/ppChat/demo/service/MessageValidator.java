@@ -8,15 +8,16 @@ import java.util.List;
 
 @Service
 public class MessageValidator {
-    private String first = "";
-    private String second = "";
-    private String third = "";
-    private String fourth = "";
-    private String fifth = "";
+   
     List<String> missingProperties;
 
     public MessageValidator() {
+
+    }
+
+    public MessageValidator(List<String> missingProperties) {
         this.missingProperties = new ArrayList<>();
+        this.missingProperties = missingProperties;
         missingProperties.add("Missing field(s): , ");
     }
 
@@ -28,27 +29,30 @@ public class MessageValidator {
         this.missingProperties = missingProperties;
     }
 
-    public void validate(MessageForUse messageForUse) {
+    public List<String> validate(MessageForUse messageForUse) {
+        List<String> resultOfValidation = new ArrayList<>();
         if (messageForUse.getMessage().getId() == 0L || messageForUse.getMessage().getId() == null) {
-            first = "message.id";
-            missingProperties.add(first);
+            String first = "message.id";
+            resultOfValidation.add(first);
         }
         if (messageForUse.getMessage().getUsername().isEmpty()) {
-            second = "message.username";
-            missingProperties.add(second);
+            String second = "message.username";
+            resultOfValidation.add(second);
         }
         if (messageForUse.getMessage().getText().isEmpty()) {
-            third = "message.text";
-            missingProperties.add(third);
+            String third = "message.text";
+            resultOfValidation.add(third);
         }
         if (messageForUse.getMessage().getTimestamp().equals(null)) {
-            fourth = "message.timestamp";
-            missingProperties.add(fourth);
+            String fourth = "message.timestamp";
+            resultOfValidation.add(fourth);
         }
         if (messageForUse.getUser().getName().isEmpty()) {
-            fifth = "client.id";
-            missingProperties.add(fifth);
+            String fifth = "client.id";
+            resultOfValidation.add(fifth);
         }
+
+        return resultOfValidation;
 
     }
 }
