@@ -76,7 +76,7 @@ public class PPChatController {
         } else {
             pPChatErrorMessage = "";
             User user = userRepository.findOne(1L);
-            user.setName(userName);
+            user.setId(userName);
             userRepository.save(user);
             return "redirect:/";
         }
@@ -98,7 +98,7 @@ public class PPChatController {
     @PostMapping("/send")
     public String doSend(@RequestParam("text") String text) {
         Message message = new Message(text);
-        message.setUsername(userRepository.findOne(1L).getName());
+        message.setUsername(userRepository.findOne(1L).getID());
         messageRepository.save(message);
         messageList.add(message);
         RestTemplate restTemplate = new RestTemplate();

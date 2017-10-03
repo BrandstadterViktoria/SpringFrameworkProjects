@@ -25,9 +25,9 @@ public class PPChatRestController {
 
     @PostMapping("/api/message/receive")
     public Object receiveMessage(@RequestBody MessageForUse messageForUse) {
-        if (messageValidator.validate(messageForUse).isEmpty() && (messageForUse.getUser().getName() != CLIENT_ID)) {
+        if (messageValidator.validate(messageForUse).isEmpty() && (messageForUse.getUser().getID() != CLIENT_ID)) {
             RestTemplate restTemplate = new RestTemplate();
-            restTemplate.postForObject(ADDRESS + "/api/message/receive", messageForUse, ResponseMessagePPChatOK.class);
+            //restTemplate.postForObject(ADDRESS + "/api/message/receive", messageForUse, ResponseMessagePPChatOK.class);
             Message message = messageForUse.getMessage();
             messageRepository.save(message);
             return new ResponseMessagePPChatOK();

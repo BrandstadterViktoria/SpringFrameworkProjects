@@ -1,4 +1,5 @@
 package com.ppChat.demo.model;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,18 +15,16 @@ public class User {
     }
 
 
-    public void setName(String name) {
-        this.id = name;
+    public User(String id) {
+        this.id = id;
     }
 
-
-
-    public User(String name) {
-        this.id = name;
-    }
-
-    public String getName() {
+    public String getID() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 

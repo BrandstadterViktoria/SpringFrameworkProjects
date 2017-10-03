@@ -1,16 +1,15 @@
 package com.ppChat.demo.model;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MessageForUse {
     private Message message;
 
-    @JsonProperty ("client")
+    @JsonProperty("client")
     private User user;
 
-    public MessageForUse(Message message, String name) {
-    }
 
-    public MessageForUse(){
+    public MessageForUse() {
 
     }
 
