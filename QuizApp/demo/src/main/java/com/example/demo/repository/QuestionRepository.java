@@ -1,5 +1,9 @@
 package com.example.demo.repository;
 
-public interface QuestionRepository {
+import com.example.demo.model.Question;
+import org.springframework.data.repository.CrudRepository;
+
+public interface QuestionRepository extends CrudRepository<Question, Long>{
+
 
 }
