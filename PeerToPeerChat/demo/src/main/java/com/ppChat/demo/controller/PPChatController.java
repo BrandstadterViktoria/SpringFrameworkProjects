@@ -32,7 +32,7 @@ public class PPChatController {
     private Message message;
     static private Logger logger = LoggerFactory.getLogger(PPChatController.class);
     private static final String CLIENT_ID = System.getenv("CHAT_APP_UNIQUE_ID");
-    private static final String ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESS");
+    private static final String ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESS") +  "/api/message/receive/";
 
     @Autowired
     public PPChatController(UserRepository userRepository, MessageRepository messageRepository) {
@@ -75,7 +75,7 @@ public class PPChatController {
             return "redirect:/";
         } else {
             pPChatErrorMessage = "";
-            User user = userRepository.findOne(1L);
+            User user = userRepository.findOne(userName);
             user.setId(userName);
             userRepository.save(user);
             return "redirect:/";
@@ -98,11 +98,11 @@ public class PPChatController {
     @PostMapping("/send")
     public String doSend(@RequestParam("text") String text) {
         Message message = new Message(text);
-        message.setUsername(userRepository.findOne(1L).getID());
+        message.setUsername(userRepository.findOne("Viki").getID());
         messageRepository.save(message);
         messageList.add(message);
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForObject(ADDRESS + "/api/message/receive", new MessageForUse(message,new User(CLIENT_ID)),
+        restTemplate.postForObject(ADDRESS, new MessageForUse(message,new User(CLIENT_ID)),
                 ResponseMessagePPChatOK.class);
         return "redirect:/";
     }

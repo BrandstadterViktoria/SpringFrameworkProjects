@@ -19,8 +19,7 @@ public class Message {
 
 
     public Message() {
-        //this.id = generateIDNumber();
-        this.timestamp = new Timestamp(System.currentTimeMillis());
+
     }
 
     public Message(String text) {
