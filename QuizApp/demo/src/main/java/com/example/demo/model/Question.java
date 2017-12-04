@@ -17,6 +17,10 @@ public class Question {
     public Question() {
     }
 
+    public Question(long id) {
+        this.id = id;
+    }
+
     public Question(String question) {
         this.question = question;
     }

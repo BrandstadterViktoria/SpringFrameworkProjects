@@ -1,19 +1,25 @@
 package com.example.demo.model;
+import com.example.demo.repository.QuestionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ListOfRandomQuestions {
 
     private long id;
 
-    private List<Question> questions;
+    private List<Question> questions = new ArrayList<>();
+
 
     public ListOfRandomQuestions() {
+
     }
 
-    public ListOfRandomQuestions(long id, List<Question> questions) {
-        this.id = id;
-        this.questions = generateRandomQuestions();
+    public ListOfRandomQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public long getId() {
@@ -32,9 +38,5 @@ public class ListOfRandomQuestions {
         this.questions = questions;
     }
 
-    public List<Question> generateRandomQuestions(){
 
-        
-
-    }
 }
