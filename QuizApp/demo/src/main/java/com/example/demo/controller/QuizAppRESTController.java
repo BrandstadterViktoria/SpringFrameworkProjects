@@ -5,22 +5,23 @@ import com.example.demo.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-public class QuizAppController {
+@RestController
+public class QuizAppRESTController {
 
     private Question question;
     private QuestionRepository questionRepository;
 
     @Autowired
-    public QuizAppController(QuestionRepository questionRepository) {
+    public QuizAppRESTController(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 
     @GetMapping("/question")
     public void showQuestions() {
-        question = questionRepository.findOne(1l);
-        System.out.println(question);
+
+
     }
 
 }
