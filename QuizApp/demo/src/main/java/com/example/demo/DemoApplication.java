@@ -55,7 +55,6 @@ public class DemoApplication implements CommandLineRunner {
 		answerRepository.save(new Answer("Lochness"));
 		answerRepository.save(new Answer("John"));
 		answerRepository.save(new Answer("ELisabeth"));
-
 		}
 	}
 

@@ -1,13 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.ListOfAnswerInput;
 import com.example.demo.model.ListOfRandomQuestions;
 import com.example.demo.model.Question;
 import com.example.demo.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +38,12 @@ public class QuizAppRESTController {
             ListOfRandomQuestions theListOfQuestion = new ListOfRandomQuestions(random);
 
        return theListOfQuestion;
+    }
+
+    @PostMapping("/QuizApp/answer")
+    public void receiveAnswer(@RequestBody ListOfAnswerInput listOfAnswerInput){
+
+
     }
 
 }
