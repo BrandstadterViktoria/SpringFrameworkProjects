@@ -18,13 +18,6 @@ import static com.example.demo.service.Validator.createQuestions;
 @RestController
 public class QuizAppRESTController {
 
-//    private QuestionRepository questionRepository;
-
-    @Autowired
-//    public QuizAppRESTController(QuestionRepository questionRepository) {
-//        this.questionRepository = questionRepository;
-    }
-
     @RequestMapping("/QuizApp")
         public String showHomePage(){
         return "Hello dear Applicant!";
