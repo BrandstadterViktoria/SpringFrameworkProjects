@@ -31,4 +31,5 @@ dependencies {
 	compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
 	runtime("mysql:mysql-connector-java:5.1.34")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile 'org.jetbrains:annotations:15.0'
 }

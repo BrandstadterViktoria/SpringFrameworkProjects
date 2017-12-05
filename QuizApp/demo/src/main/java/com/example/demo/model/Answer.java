@@ -12,13 +12,14 @@ public class Answer {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String answer;
+    private String answerString;
 
     public Answer() {
     }
 
+
     public Answer(String answer) {
-        this.answer = answer;
+        this.answerString = answer;
     }
 
     public long getId() {
@@ -29,11 +30,11 @@ public class Answer {
         this.id = id;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getAnswerString() {
+        return answerString;
     }
 
     public void setAnswer(String answer) {
-        this.answer = answer;
+        this.answerString = answer;
     }
 }

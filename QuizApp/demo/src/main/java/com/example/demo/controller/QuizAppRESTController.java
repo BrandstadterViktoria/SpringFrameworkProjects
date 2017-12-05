@@ -8,18 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.demo.service.Validator.createQuestions;
 
 @RestController
 public class QuizAppRESTController {
 
-    private Question question;
-    private QuestionRepository questionRepository;
+//    private QuestionRepository questionRepository;
 
     @Autowired
-    public QuizAppRESTController(QuestionRepository questionRepository) {
-        this.questionRepository = questionRepository;
+//    public QuizAppRESTController(QuestionRepository questionRepository) {
+//        this.questionRepository = questionRepository;
     }
 
     @RequestMapping("/QuizApp")
@@ -29,21 +32,16 @@ public class QuizAppRESTController {
 
     @GetMapping("/QuizApp/question")
     public ListOfRandomQuestions showQuestions() {
-            List<Question> random = new ArrayList<>();
-            for (int i = 0; i <= 5 ; i++) {
-                long randomNumber = (long) (Math.random() * 10) + 1;
-                Question forList = questionRepository.findOne(randomNumber);
-                random.add(forList);
-            }
-            ListOfRandomQuestions theListOfQuestion = new ListOfRandomQuestions(random);
-
-       return theListOfQuestion;
+    ListOfRandomQuestions listOfRandomQuestions = createQuestions();
+    return listOfRandomQuestions;
     }
 
     @PostMapping("/QuizApp/answer")
+    @NotNull
     public void receiveAnswer(@RequestBody ListOfAnswerInput listOfAnswerInput){
 
 
     }
+
 
 }

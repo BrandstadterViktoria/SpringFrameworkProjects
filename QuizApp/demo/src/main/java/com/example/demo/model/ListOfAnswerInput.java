@@ -7,7 +7,7 @@ public class ListOfAnswerInput {
 
     private long id;
 
-    private List<Answer> questions = new ArrayList<>();
+    private List<Answer> answerList = new ArrayList<>();
 
     public ListOfAnswerInput() {
     }
@@ -20,11 +20,11 @@ public class ListOfAnswerInput {
         this.id = id;
     }
 
-    public List<Answer> getQuestions() {
-        return questions;
+    public List<Answer> getAnswerList() {
+        return answerList;
     }
 
-    public void setQuestions(List<Answer> questions) {
-        this.questions = questions;
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
     }
 }
