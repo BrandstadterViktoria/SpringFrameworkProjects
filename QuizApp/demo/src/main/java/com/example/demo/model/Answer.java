@@ -5,16 +5,20 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Answers")
-public class Answers {
+@Table(name = "Answer")
+public class Answer {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String question;
+    private String answer;
 
-    public Answers() {
+    public Answer() {
+    }
+
+    public Answer(String answer) {
+        this.answer = answer;
     }
 
     public long getId() {
@@ -25,11 +29,11 @@ public class Answers {
         this.id = id;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }
