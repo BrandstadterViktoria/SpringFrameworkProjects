@@ -1,5 +1,4 @@
 package com.example.demo.service;
-
 import com.example.demo.model.Answer;
 import com.example.demo.model.ListOfAnswerInput;
 import com.example.demo.model.ListOfRandomQuestions;
@@ -16,9 +15,9 @@ import java.util.List;
 public class Validator {
 
     @Autowired
-    public static QuestionRepository questionRepository;
-    private static AnswerRepository answerRepository;
-    private static ListOfRandomQuestions listOfRandomQuestions;
+    private  QuestionRepository questionRepository;
+    private  AnswerRepository answerRepository;
+    private ListOfRandomQuestions listOfRandomQuestions;
 
     public Validator(ListOfRandomQuestions listOfRandomQuestions) {
         listOfRandomQuestions = createQuestions();
@@ -30,7 +29,7 @@ public class Validator {
         this.answerRepository = answerRepository;
     }
 
-    public static ListOfRandomQuestions createQuestions() {
+    public ListOfRandomQuestions createQuestions() {
         List<Question> random = new ArrayList<>();
         for (int i = 0; i <= 5; i++) {
             long randomNumber = (long) (Math.random() * 10) + 1;
@@ -41,7 +40,7 @@ public class Validator {
         return new ListOfRandomQuestions(random);
     }
 
-    public static boolean validateAnswers(ListOfAnswerInput listOfAnswerInput) {
+    public boolean validateAnswers(ListOfAnswerInput listOfAnswerInput) {
         boolean isTheAnswerCorrect = true;
         for (Answer answer : listOfAnswerInput.getAnswerList()) {
             long answerOfGivenAnswer = answer.getId();

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.demo.service.Validator.createQuestions;
+import static com.example.demo.service.Validator.validateAnswers;
 
 @RestController
 public class QuizAppRESTController {
@@ -32,7 +33,7 @@ public class QuizAppRESTController {
     @PostMapping("/QuizApp/answer")
     @NotNull
     public void receiveAnswer(@RequestBody ListOfAnswerInput listOfAnswerInput){
-
+     validateAnswers(listOfAnswerInput);
 
     }
 
