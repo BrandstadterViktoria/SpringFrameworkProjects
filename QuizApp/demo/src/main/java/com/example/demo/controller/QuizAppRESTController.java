@@ -5,12 +5,15 @@ import com.example.demo.model.ListOfRandomQuestions;
 import com.example.demo.service.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotNull;
 
 
 @RestController
 public class QuizAppRESTController {
+
+    private static final String ADDRESS = System.getenv("QUIZ_APP_ADDRESS");
 
     @Autowired
     private Validator validator;
@@ -32,11 +35,11 @@ public class QuizAppRESTController {
     @PostMapping("/QuizApp/answer")
     @NotNull
     public void receiveAnswer(@RequestBody ListOfAnswerInput listOfAnswerInput) {
+        RestTemplate restTemplate = new RestTemplate();
         validator.validateAnswers(listOfAnswerInput);
         if (validator.validateAnswers(listOfAnswerInput)) {
             System.out.println("Answers are correct");
-        } else {
-            System.out.println("Wrong answer");
+        } else { restTemplate.postForObject()
 
         }
     }

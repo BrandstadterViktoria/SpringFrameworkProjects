@@ -2,12 +2,12 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListOfProjects {
+public class ListOfProjectsOutput {
 
 
     private List<Project> projectList = new ArrayList<>();
 
-    public ListOfProjects() {
+    public ListOfProjectsOutput() {
     }
 
     public List<Project> getProjectList() {
