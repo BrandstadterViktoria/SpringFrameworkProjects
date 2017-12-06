@@ -19,6 +19,9 @@ public class Validator {
     private  AnswerRepository answerRepository;
     private ListOfRandomQuestions listOfRandomQuestions;
 
+    public Validator() {
+    }
+
     public Validator(ListOfRandomQuestions listOfRandomQuestions) {
         listOfRandomQuestions = createQuestions();
         this.listOfRandomQuestions = listOfRandomQuestions;
