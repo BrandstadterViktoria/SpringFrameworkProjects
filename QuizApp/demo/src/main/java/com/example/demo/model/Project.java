@@ -10,7 +10,7 @@ public class Project {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String projectString;
+    private String nameOfProject;
 
     public Project() {
     }
@@ -23,11 +23,11 @@ public class Project {
         this.id = id;
     }
 
-    public String getProjectString() {
-        return projectString;
+    public String getNameOfProject() {
+        return nameOfProject;
     }
 
-    public void setProjectString(String projectString) {
-        this.projectString = projectString;
+    public void setNameOfProject(String nameOfProject) {
+        this.nameOfProject = nameOfProject;
     }
 }
