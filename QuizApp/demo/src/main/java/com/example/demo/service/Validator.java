@@ -1,8 +1,5 @@
 package com.example.demo.service;
-import com.example.demo.model.Answer;
-import com.example.demo.model.ListOfAnswerInput;
-import com.example.demo.model.ListOfRandomQuestions;
-import com.example.demo.model.Question;
+import com.example.demo.model.*;
 import com.example.demo.repository.AnswerRepository;
 import com.example.demo.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +51,8 @@ public class Validator {
         }
 
         return isTheAnswerCorrect;
+    }
+
     }
 }
 
